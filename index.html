@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ro">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,60 +16,73 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css"> </head>
 
 <body id="top">
 
+    <div id="watermark-print">Duminică Adrian Cătălin</div>
+
     <header>
         <h1>Xomechtry <i class="fa-solid fa-industry"></i></h1>
-        <nav>
-            <ul>
-                <li>Acasă
-                    <ul>
+        
+        <div id="hamburger-menu" class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <nav id="main-nav">
+            <ul class="menu-principal">
+                
+                <li>
+                    <a href="#welcome" class="nav-link">
+                        <i class="fa-solid fa-house"></i> <span class="nav-text">Acasă</span>
+                    </a>
+                    <ul class="sub-meniu">
                         <li><a href="#welcome">Bun venit</a></li>
-                        <li><a href="#servicii">Servicii</a></li>
-                        <li><a href="#evenimente">Evenimente</a></li>
+                        <li><a href="#tarife">Capacități & Tarife</a></li>
+                        <li><a href="#video-prezentare">Video Utilaje</a></li>
                     </ul>
                 </li>
-                <li>Despre noi</li>
-                <li><a href="#tarife">Tarife</a></li>
-                <li><a href="#contact">Contact</a></li>
+                
+                <li>
+                    <a href="#servicii" class="nav-link">
+                        <i class="fa-solid fa-cubes"></i> <span class="nav-text">Materiale</span>
+                    </a>
+                    <ul class="sub-meniu">
+                        <li><a href="aluminiu.html">Aluminiu 6061</a></li>
+                        <li><a href="otel.html">Oțel Inoxidabil</a></li>
+                        <li><a href="titan.html">Titan</a></li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <a href="#contact" class="nav-link btn-cotatie">
+                        <i class="fa-solid fa-calculator"></i> <span class="nav-text">Cere Cotație</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
 
     <main class="grid-container">
-        
         <section id="welcome" class="zona zona-1">
             <hgroup>
                 <h2>Bun venit la Xomechtry</h2>
-                <p>Manufacturare precisă, la un click distanță. <i class="fa-solid fa-cog fa-spin"></i></p>
+                <p>Manufacturare precisă, la un click distanță. <i class="fa-solid fa-cog fa-spin animatie-rotativa"></i></p>
             </hgroup>
-
-            <p>Compania <b>Xomechtry</b> este lider pe piața locală în <b>confecții metalice</b> și <b>prelucrare CNC</b>. Oferim servicii de frezare și <b>strunjire</b> de înaltă calitate pentru o gamă largă de materiale precum aluminiu și <b>oțel</b>.</p>
-            
-            <p><strong>Atenție!</strong> Datorită cererii mari, termenele pentru piesele din titan sunt decalate.</p>
-            <p>Ați crezut că e <em>simplu</em> să operezi un strung pe 5 axe? Ei bine, la început ofeream o reducere de <s>5%</s> <ins>15%</ins> pentru clienții fideli. Deviza noastră este: <q>Așchia nu sare departe de strung!</q></p>
-            <p><dfn>Frezarea</dfn> este procedeul de prelucrare prin așchiere cu ajutorul unei scule cu mai multe tăișuri.</p>
-            
-            <figure>
+            <p>Compania <b>Xomechtry</b> este lider pe piața locală în <b>confecții metalice</b> și prelucrare CNC.</p>
+            <p><strong>Atenție!</strong> Termenele pentru titan sunt decalate.</p>
+            <figure class="media-print-hide">
                 <picture>
                     <source srcset="./resurse/imagini/cnc-mic.jpeg" media="(max-width: 600px)" />
-                    <source srcset="./resurse/imagini/cnc-mediu.jpeg" media="(max-width: 1024px)" />
-                    <img src="./resurse/imagini/cnc-mare.jpeg" alt="Aparat prelucrare CNC" title="Mașină unealtă modernă în acțiune" />
+                    <img src="./resurse/imagini/cnc-mare.jpeg" alt="Aparat prelucrare CNC" title="Mașină unealtă modernă" />
                 </picture>
-                <figcaption>Echipament de prelucrare CNC de ultimă generație din hala Xomechtry</figcaption>
+                <figcaption>Echipament de prelucrare CNC (imagine ascunsă la printare)</figcaption>
             </figure>
-
-            <p>Formula vitezei de așchiere (Task MathML):</p>
+            <p>Formula vitezei de așchiere (MathML):</p>
             <math xmlns="http://www.w3.org/1998/Math/MathML" class="formula-cnc">
-                <mi>v</mi>
-                <mo>=</mo>
-                <mfrac>
-                    <mrow><mi>π</mi><mo>·</mo><mi>d</mi><mo>·</mo><mi>n</mi></mrow>
-                    <mn>1000</mn>
-                </mfrac>
+                <mi>v</mi><mo>=</mo><mfrac><mrow><mi>π</mi><mo>·</mo><mi>d</mi><mo>·</mo><mi>n</mi></mrow><mn>1000</mn></mfrac>
             </math>
         </section>
 
@@ -78,51 +90,16 @@
             <h2>Capacități și Tarife</h2>
             <div class="table-responsive">
                 <table>
-                    <caption>Tabel estimativ de costuri și termene de execuție</caption>
+                    <caption>Costuri și termene de execuție</caption>
                     <thead>
-                        <tr>
-                            <th>Material</th>
-                            <th>Procedeu Recomandat</th>
-                            <th>Timp Execuție</th>
-                            <th>Preț/Kg (estimativ)</th>
-                        </tr>
+                        <tr><th>Material</th><th>Procedeu</th><th>Timp</th><th>Preț/Kg</th></tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td rowspan="2">Aluminiu</td>
-                            <td>Frezare CNC</td>
-                            <td>3 zile</td>
-                            <td>150 RON</td>
-                        </tr>
-                        <tr>
-                            <td>Strunjire</td>
-                            <td>2 zile</td>
-                            <td>120 RON</td>
-                        </tr>
-                        <tr>
-                            <td>Oțel Carbon</td>
-                            <td>Debitarea Laser</td>
-                            <td>4 zile</td>
-                            <td>90 RON</td>
-                        </tr>
-                        <tr>
-                            <td>Titan</td>
-                            <td>Frezare 5 Axe</td>
-                            <td>7 zile</td>
-                            <td>450 RON</td>
-                        </tr>
-                        <tr>
-                            <td>Plastic ABS</td>
-                            <td>Printare 3D</td>
-                            <td>1 zi</td>
-                            <td>80 RON</td>
-                        </tr>
+                        <tr><td rowspan="2">Aluminiu</td><td>Frezare CNC</td><td>3 zile</td><td>150 RON</td></tr>
+                        <tr><td>Strunjire</td><td>2 zile</td><td>120 RON</td></tr>
+                        <tr><td>Oțel Carbon</td><td>Debitarea Laser</td><td>4 zile</td><td>90 RON</td></tr>
+                        <tr><td>Titan</td><td>Frezare 5 Axe</td><td>7 zile</td><td>450 RON</td></tr>
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="4">Prețurile includ controlul calității. Nu includ TVA.</td>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
         </section>
@@ -130,34 +107,30 @@
         <section id="evenimente" class="zona zona-3">
             <h2>Evenimente</h2>
             <ul>
-                <li><b>Ziua Porților Deschise</b> - <time datetime="2026-05-15T10:00">15 Mai, ora 10:00</time></li>
-                <li><b>Webinar Toleranțe Strânse</b> - <time datetime="2026-06-20T14:30">20 Iunie, ora 14:30</time></li>
+                <li><b>Ziua Porților Deschise</b> - 15 Mai</li>
+                <li><b>Webinar Toleranțe</b> - 20 Iunie</li>
             </ul>
         </section>
 
         <section class="zona zona-4">
             <h2>Anunțuri</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Lorem ipsum dolor sit amet. Mentenanța serverelor este programată sâmbătă.</p>
         </section>
 
         <section class="zona zona-5">
             <h2>Utilizatori Online</h2>
-            <ul>
-                <li>Inginer Popescu</li>
-                <li>Client #3211</li>
-                <li>Op. Strungar</li>
-            </ul>
+            <ul><li>Ing. Popescu</li><li>Client #3211</li><li>Op. Strungar</li></ul>
         </section>
 
         <section id="statistici" class="zona zona-6">
             <h2>Starea Fabricii (Live)</h2>
             <p>Stoc tablă aluminiu: <meter min="0" max="100" low="30" high="80" optimum="90" value="20">20%</meter></p>
-            <p>Capacitate ocupată azi: <meter min="0" max="100" low="30" high="80" optimum="50" value="95">95%</meter></p>
+            <p>Capacitate ocupată: <meter min="0" max="100" low="30" high="80" optimum="50" value="95">95%</meter></p>
         </section>
 
         <section class="zona zona-7">
             <h2>Date Server</h2>
-            <p>Lorem ipsum dolor sit amet. Server status: OK. Uptime: 99.9%.</p>
+            <p>Server status: OK. Uptime: 99.9%.</p>
         </section>
 
         <section class="zona zona-8">
@@ -166,42 +139,33 @@
                 <article>
                     <h3>Prelucrare CNC și Strunjire</h3>
                     <p>Folosim tehnologia <abbr title="Computer Numerical Control">CNC</abbr>.</p>
-                    <dl>
-                        <dt>Aluminiu 6061</dt>
-                        <dd>Material ușor, rezistent. Ideal pentru industria auto.</dd>
-                        <dt>Oțel Inoxidabil 304</dt>
-                        <dd>Rezistență mare la coroziune, folosit în echipamente medicale.</dd>
-                    </dl>
                 </article>
             </div>
-            
-            <hr>
-
-            <div id="video-prezentare">
+            <div id="video-prezentare" class="media-print-hide">
                 <h2>Cum funcționează utilajele noastre</h2>
                 <div class="container-iframe">
                     <div class="taburi-iframe">
                         <a href="https://www.youtube.com/embed/FNYEXjRmDtI" target="iframe_utilaje">Frezare CNC</a>
                         <a href="https://www.youtube.com/embed/fDSLWYHuj4g" target="iframe_utilaje">Tutorial Strunjire</a>
-                        <a href="https://www.youtube.com/embed/bbZqu5T0OxU" target="iframe_utilaje">Printare 3D</a>
                     </div>
-                    <iframe name="iframe_utilaje" src="https://www.youtube.com/embed/FNYEXjRmDtI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe name="iframe_utilaje" src="https://www.youtube.com/embed/FNYEXjRmDtI" allowfullscreen></iframe>
                 </div>
             </div>
         </section>
-
     </main>
 
     <footer id="contact">
+        <p id="print-banner">Acesta este un proiect școlar!</p>
+        
         <h2>Informații de Contact</h2>
         <address>
-            Telefon: <a href="tel:+40711222333">0711 222 333</a><br>
-            Email: <a href="mailto:comenzi@xomechtry.ro">comenzi@xomechtry.ro</a>
+            Telefon: 0711 222 333<br>
+            Email: comenzi@xomechtry.ro
         </address>
-        <p><small>Copyright © <time datetime="2026-03-16">16 martie 2026</time> Duminică Adrian Cătălin</small></p>
+        <p><small>Copyright © 2026 Duminică Adrian Cătălin</small></p>
     </footer>
 
-    <a href="#top" id="link-top" title="Acesta este butonul care te duce in susul paginii">
+    <a href="#top" id="link-top" title="In susul paginii">
         <span>↑</span>
     </a>
 
