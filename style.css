@@ -1,0 +1,272 @@
+/* =========================================================
+   1. VARIABILE SPECIFICE COMPONENTELOR
+   ========================================================= */
+body {
+    /* Variabile Spațiere (Design Rudimentar) */
+    --spatiere-laterala: 10vw;
+    --grid-gap: 2rem;
+    --padding-zone: 1.5rem;
+    --raza-colturi: 0.8rem;
+    
+    /* Tranziție pentru des/creșterea dimensiunii textului (Task Layout) */
+    transition: font-size 0.5s ease; 
+}
+
+/* Titluri în unități relative (rem) */
+h1, h2, h3 { margin-bottom: 1rem; }
+h1 { font-size: 2.5rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.4rem; }
+p, figure { margin-bottom: 1rem; }
+
+/* =========================================================
+   2. LAYOUT RESPONSIVE & GRID (Task Layout - Conform Imaginii)
+   ========================================================= */
+header, footer {
+    background-color: var(--c2-border-inchis);
+    color: white;
+    padding: 2rem var(--spatiere-laterala);
+    text-align: center;
+}
+header a, footer a { color: var(--c4-highlight); text-decoration: none; font-weight: bold; }
+header a:hover, footer a:hover { color: white; }
+
+.grid-container {
+    display: grid;
+    padding: 2rem var(--spatiere-laterala);
+    gap: var(--grid-gap);
+    
+    /* Harta pentru Ecran Mare (Desktop) - 6 Coloane pentru a permite împărțirea cerută */
+    grid-template-areas: 
+        "zona1 zona1 zona1 zona1 zona1 zona1"
+        "zona5 zona5 zona6 zona6 zona7 zona7"
+        "zona3 zona3 zona3 zona2 zona2 zona2"
+        "zona4 zona4 zona4 zona2 zona2 zona2"
+        "zona8 zona8 zona8 zona8 zona8 zona8";
+    grid-template-columns: repeat(6, 1fr);
+}
+
+/* =========================================================
+   3. IZOLARE VIZUALĂ ZONE (Task Design Rudimentar)
+   ========================================================= */
+.zona {
+    padding: var(--padding-zone);
+    border: 0.2rem solid var(--c2-border-inchis);
+    border-radius: var(--raza-colturi);
+    box-shadow: 0.3rem 0.4rem 1rem rgba(28, 30, 235, 0.15);
+}
+
+/* Background diferit din schema cromatică */
+.zona-1 { grid-area: zona1; background-color: white; }
+.zona-2 { grid-area: zona2; background-color: white; }
+.zona-3 { grid-area: zona3; background-color: var(--c1-accent-deschis); color: #111; }
+.zona-4 { grid-area: zona4; background-color: var(--c5-secundara); color: white; }
+.zona-5 { grid-area: zona5; background-color: var(--c2-border-inchis); color: white; }
+.zona-6 { grid-area: zona6; background-color: var(--c3-principala); color: white; }
+.zona-7 { grid-area: zona7; background-color: var(--c4-highlight); color: #111; }
+.zona-8 { grid-area: zona8; background-color: white; }
+
+/* Lățime procentuală pentru media cu min/max (Unități relative) */
+img, video, iframe {
+    width: 100%;
+    max-width: 50rem;
+    min-width: 15rem;
+    height: auto;
+    border-radius: 0.5rem;
+    display: block;
+    margin: 0 auto 1rem;
+}
+
+/* =========================================================
+   4. STILIZARE TABEL (Task Stilizare Tabel)
+   ========================================================= */
+.table-responsive {
+    overflow-x: auto; 
+    width: 100%;
+    margin-top: 1rem;
+}
+
+table {
+    border: 5px inset var(--c3-principala); /* Bordură inset de min 5px */
+}
+
+caption {
+    caption-side: bottom;
+    padding-top: 1rem;
+    font-weight: bold;
+    color: var(--c2-border-inchis);
+}
+
+th, td {
+    border: 1px solid var(--c5-secundara); /* 1px impus de cerință */
+    padding: 0.8rem;
+    text-align: center;
+}
+
+th { background-color: var(--c2-border-inchis); color: white; }
+
+/* Bordere alternate între rânduri */
+tbody tr:nth-child(even) td { border-bottom: 2px solid var(--c1-accent-deschis); }
+tbody tr:nth-child(odd) td { border-bottom: 2px solid var(--c2-border-inchis); }
+
+/* Hover pe rând cu outline semi-transparent 5px și canal alpha */
+tbody tr {
+    outline: 5px solid transparent;
+    transition: outline 0.5s ease;
+}
+tbody tr:hover {
+    outline: 5px solid rgba(45, 227, 235, 0.7); /* Cyan cu alpha 0.7 */
+    z-index: 10;
+    position: relative;
+    background-color: #f9f9f9;
+}
+
+/* =========================================================
+   5. STILIZARE TABURI VIDEO (Task Flexbox)
+   ========================================================= */
+.container-iframe {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.taburi-iframe {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.taburi-iframe a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12rem;
+    height: 3.5rem;
+    background-color: var(--c3-principala);
+    color: white;
+    text-decoration: none;
+    border: 0.2rem solid var(--c2-border-inchis);
+    border-radius: 0.4rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.taburi-iframe a:hover {
+    background-color: var(--c4-highlight);
+    color: #111;
+}
+
+iframe[name="iframe_utilaje"] {
+    height: 25rem; /* Înălțime fixă (relativă) pentru vizualizare ok */
+    border: 0.3rem solid var(--c2-border-inchis);
+}
+
+/* =========================================================
+   6. BUTON BACK TO TOP ANIMAT (Task Link Top)
+   ========================================================= */
+#link-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 4rem;
+    height: 4rem;
+    background: linear-gradient(135deg, var(--c2-border-inchis), var(--c1-accent-deschis), var(--c2-border-inchis));
+    border: 0.2rem dashed var(--c4-highlight);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    opacity: 0.5; /* Semi-transparent */
+    transition: transform 0.6s ease, opacity 0.3s ease;
+    z-index: 9999;
+}
+
+#link-top span {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    display: inline-block;
+    transition: transform 0.6s ease;
+}
+
+#link-top:hover {
+    opacity: 1; /* Opac */
+    transform: rotate(360deg); /* Se rotește elementul rotund */
+}
+#link-top:hover span {
+    transform: rotate(-360deg); /* Săgeata se rotește invers (stă pe loc) */
+}
+
+/* =========================================================
+   7. MATHML (Bonus 2)
+   ========================================================= */
+.formula-cnc {
+    display: block;
+    text-align: center;
+    margin: 2rem 0;
+    font-size: 2.5rem;
+    padding: 1rem;
+}
+.formula-cnc mi { color: var(--c3-principala); font-style: italic; font-weight: bold; }
+.formula-cnc mo { color: var(--c2-border-inchis); font-weight: bold; font-size: 1.2em; }
+.formula-cnc mn { color: var(--c1-accent-deschis); font-size: 0.9em; }
+.formula-cnc mfrac { border-bottom: 0.2rem solid var(--c4-highlight); }
+
+/* =========================================================
+   8. MEDIA QUERIES (Task Layout Responsive)
+   ========================================================= */
+
+/* Ecran Mediu (Tablete) */
+@media screen and (max-width: 64rem) { /* 1024px */
+    html { font-size: 15px; } /* Descrește fontul */
+    
+    body {
+        --spatiere-laterala: 5vw; /* Descrește spațierea */
+        --grid-gap: 1.2rem;       /* Descrește gap-ul */
+    }
+
+    /* Schimbare hartă layout (2 Coloane) */
+    .grid-container {
+        grid-template-areas: 
+            "zona1 zona1"
+            "zona5 zona6"
+            "zona7 zona7"
+            "zona3 zona4"
+            "zona2 zona2"
+            "zona8 zona8";
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Ecran Mic (Telefoane) */
+@media screen and (max-width: 37.5rem) { /* 600px */
+    html { font-size: 14px; } /* Descrește fontul */
+    
+    body {
+        --spatiere-laterala: 2vw; /* Valoare minimă */
+        --grid-gap: 0.8rem;       /* Valoare minimă */
+    }
+
+    /* Anulare coloane layout (Curge natural, 1 coloană) */
+    .grid-container {
+        grid-template-areas: 
+            "zona1"
+            "zona5"
+            "zona6"
+            "zona7"
+            "zona3"
+            "zona4"
+            "zona2"
+            "zona8";
+        grid-template-columns: 1fr;
+    }
+
+    /* Task: Animațiile dezactivate pe ecran mic */
+    .fa-spin, #link-top, #link-top span, tbody tr {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+    }
+}
