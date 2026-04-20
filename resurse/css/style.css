@@ -1,0 +1,336 @@
+/* =========================================================
+   1. VARIABILE SASS & CSS (Dependențe de tema cromatică)
+   ========================================================= */
+$tr-speed: 0.4s;
+$hamburger-size: 30px;
+
+body {
+    --spatiere-laterala: 10vw;
+    --grid-gap: 2rem;
+    --padding-zone: 1.5rem;
+    transition: font-size 0.5s ease;
+}
+
+h1, h2, h3 { margin-bottom: 1rem; }
+h1 { font-size: 2.5rem; }
+h2 { font-size: 1.8rem; }
+p, figure { margin-bottom: 1rem; }
+
+/* =========================================================
+   2. SASS EXTENDS & MIXINS
+   ========================================================= */
+%flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+%reset-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#watermark-print, #print-banner {
+    display: none;
+}
+
+/* =========================================================
+   3. HEADER & MENIU
+   ========================================================= */
+header {
+    background-color: var(--c2-border-inchis);
+    color: white;
+    padding: 1.5rem var(--spatiere-laterala);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    .hamburger { display: none; }
+
+    #main-nav {
+        margin-top: 1rem;
+        width: 100%;
+
+        .menu-principal {
+            @extend %reset-list;
+            @extend %flex-center;
+            gap: 2rem;
+
+            > li {
+                position: relative;
+
+                > .nav-link {
+                    color: white;
+                    text-decoration: none;
+                    font-weight: bold;
+                    padding: 0.8rem 1.5rem;
+                    display: inline-block;
+                    position: relative;
+                    z-index: 1;
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        top: 0; left: 0; right: 0; bottom: 0;
+                        background-color: rgba(45, 227, 235, 0.2); 
+                        z-index: -1;
+                        transform: scale(0);
+                        transition: transform $tr-speed ease-in-out;
+                        border-radius: 5px;
+                    }
+                    &:hover::before { transform: scale(1); }
+                }
+
+                .btn-cotatie {
+                    background-color: var(--c4-highlight);
+                    color: var(--c2-border-inchis);
+                    border-radius: 4px;
+                }
+
+                .sub-meniu {
+                    @extend %reset-list;
+                    position: absolute;
+                    top: 100%; left: 0;
+                    background-color: var(--c3-principala);
+                    min-width: 220px;
+                    border: 2px solid var(--c2-border-inchis);
+                    border-radius: 0 5px 5px 5px;
+                    z-index: 100;
+                    
+                    transform-origin: top left;
+                    transform: scale(0);
+                    transition: transform $tr-speed ease;
+                    
+                    li a {
+                        color: white;
+                        text-decoration: none;
+                        display: block;
+                        padding: 0.8rem 1rem;
+                        transition: all 0.3s;
+
+                        &:hover {
+                            background-color: var(--c4-highlight);
+                            color: var(--c2-border-inchis);
+                            text-shadow: 1px 1px 0px white, -1px -1px 0px white, 1px -1px 0px white, -1px 1px 0px white;
+                        }
+                    }
+                }
+                &:hover .sub-meniu { transform: scale(1); }
+            }
+        }
+    }
+}
+
+/* =========================================================
+   4. LAYOUT GRID
+   ========================================================= */
+.grid-container {
+    display: grid;
+    padding: 2rem var(--spatiere-laterala);
+    gap: var(--grid-gap);
+    
+    grid-template-areas:
+        "zona1 zona1 zona1"
+        "zona5 zona6 zona7"
+        "zona3 zona2 zona2"
+        "zona4 zona2 zona2"
+        "zona8 zona8 zona8";
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.zona {
+    padding: var(--padding-zone);
+    border: 0.2rem solid var(--c2-border-inchis);
+    border-radius: 0.8rem;
+    box-shadow: 0.3rem 0.4rem 1rem rgba(28, 30, 235, 0.15);
+}
+
+.zona-1 { grid-area: zona1; background-color: white; }
+.zona-2 { grid-area: zona2; background-color: white; }
+.zona-3 { grid-area: zona3; background-color: var(--c1-accent-deschis); color: #111; }
+.zona-4 { grid-area: zona4; background-color: var(--c5-secundara); color: white; }
+.zona-5 { grid-area: zona5; background-color: var(--c2-border-inchis); color: white; }
+.zona-6 { grid-area: zona6; background-color: var(--c3-principala); color: white; }
+.zona-7 { grid-area: zona7; background-color: var(--c4-highlight); color: #111; }
+.zona-8 { grid-area: zona8; background-color: white; }
+
+img {
+    width: 100%;
+    max-width: 50rem;
+    border-radius: 0.5rem;
+    display: block;
+    margin: 0 auto;
+}
+
+/* =========================================================
+   5. TABEL, LINK TOP & MATHML
+   ========================================================= */
+.table-responsive { overflow-x: auto; width: 100%; }
+table { border: 5px inset var(--c3-principala); }
+caption { caption-side: bottom; font-weight: bold; color: var(--c2-border-inchis); padding-top: 1rem;}
+th, td { border: 1px solid var(--c5-secundara); padding: 0.8rem; text-align: center; }
+th { background-color: var(--c2-border-inchis); color: white; }
+tbody tr:nth-child(even) td { border-bottom: 2px solid var(--c1-accent-deschis); border-top: 2px solid var(--c1-accent-deschis); }
+tbody tr:nth-child(odd) td { border-bottom: 2px solid var(--c2-border-inchis); border-top: 2px solid var(--c2-border-inchis); }
+tbody tr { outline: 5px solid transparent; transition: outline 0.5s ease; }
+tbody tr:hover { outline: 5px solid rgba(45, 227, 235, 0.7); z-index: 10; position: relative; background-color: #f9f9f9; }
+
+/* TABURI IFRAME */
+.container-iframe { display: flex; flex-direction: row; align-items: flex-start; gap: 1rem; }
+.taburi-iframe { display: flex; flex-direction: column; gap: 0.5rem; flex-shrink: 0; }
+.taburi-iframe a {
+    @extend %flex-center; width: 12rem; height: 3.5rem; background-color: var(--c3-principala);
+    color: white; text-decoration: none; border: 0.2rem solid var(--c2-border-inchis);
+    border-radius: 0.4rem; font-weight: bold; transition: background-color 0.3s ease; text-align: center;
+}
+.taburi-iframe a:hover { background-color: var(--c4-highlight); color: #111; }
+iframe[name="iframe_utilaje"] { flex: 1; height: 25rem; border: 0.3rem solid var(--c2-border-inchis); border-radius: 0.5rem; display: block; }
+
+/* Link Top */
+#link-top {
+    position: fixed; bottom: 2rem; right: 2rem; width: 4rem; height: 4rem;
+    background: linear-gradient(135deg, var(--c2-border-inchis), var(--c1-accent-deschis), var(--c2-border-inchis));
+    border: 0.2rem dashed var(--c4-highlight); border-radius: 50%;
+    @extend %flex-center; text-decoration: none; opacity: 0.5;
+    transition: transform 0.6s ease, opacity 0.3s ease; z-index: 9999;
+    
+    span { color: white; font-size: 2rem; font-weight: bold; display: inline-block; transition: transform 0.6s ease; }
+    &:hover { opacity: 1; transform: rotate(360deg); }
+    &:hover span { transform: rotate(-360deg); }
+}
+
+/* MathML Corectat */
+.formula-cnc { 
+    display: block; 
+    text-align: center; 
+    margin: 2rem 0; 
+    font-size: 2.5rem; 
+    padding: 1rem; 
+}
+.formula-cnc mi { 
+    color: var(--c3-principala); 
+    font-style: italic; 
+    font-weight: bold; 
+}
+.formula-cnc mo { 
+    color: var(--c2-border-inchis); 
+    font-weight: bold; 
+    font-size: 1.2em;
+}
+
+/* =========================================================
+   6. RESPONSIVE MEDIA QUERIES
+   ========================================================= */
+@media screen and (max-width: 1024px) {
+    html { font-size: 15px; }
+    body { --spatiere-laterala: 5vw; --grid-gap: 1.2rem; }
+    #main-nav .menu-principal > li > .nav-link .nav-text { display: none; }
+    .grid-container {
+        grid-template-areas: "zona1 zona1" "zona5 zona6" "zona7 zona7" "zona3 zona4" "zona2 zona2" "zona8 zona8";
+        grid-template-columns: 1fr 1fr;
+    }
+    .container-iframe { flex-direction: column; }
+    .taburi-iframe { flex-direction: row; flex-wrap: wrap; }
+    .taburi-iframe a { width: 10rem; height: 3rem; }
+    iframe[name="iframe_utilaje"] { width: 100%; height: 20rem; }
+}
+
+@media screen and (max-width: 600px) {
+    html { font-size: 14px; }
+    body { --spatiere-laterala: 2vw; --grid-gap: 0.8rem; }
+    header {
+        flex-direction: row; justify-content: space-between;
+        #main-nav { display: none; } 
+        
+        .hamburger {
+            display: block; width: $hamburger-size; height: 24px; position: relative; cursor: pointer;
+            .bar {
+                position: absolute; left: 0; width: 100%; height: 4px; background-color: white; border-radius: 2px;
+                &:nth-child(1) { top: 0; }
+                &:nth-child(2) { top: 50%; transform: translateY(-50%); }
+                &:nth-child(3) { bottom: 0; }
+            }
+        }
+
+        @keyframes intrareBare {
+            0% { opacity: 0; background-color: var(--c3-principala); transform: translateX(-50px) rotate(-180deg); }
+            50% { opacity: 0.5; background-color: var(--c4-highlight); transform: translateX(10px) rotate(20deg); }
+            100% { opacity: 1; background-color: white; transform: translateX(0) rotate(0); }
+        }
+
+        @for $i from 1 through 3 {
+            .hamburger .bar:nth-child(#{$i}) {
+                animation: intrareBare 0.8s ease forwards;
+                animation-delay: #{$i * 300}ms;
+                opacity: 0;
+            }
+        }
+        .menu-principal > li .sub-meniu { clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%, 0 20%); }
+    }
+    .grid-container {
+        grid-template-areas: "zona1" "zona5" "zona6" "zona7" "zona3" "zona4" "zona2" "zona8";
+        grid-template-columns: 1fr;
+    }
+    .container-iframe { flex-direction: column; }
+    .taburi-iframe { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+    .taburi-iframe a { width: 9rem; height: 3rem; font-size: 0.85rem; }
+    iframe[name="iframe_utilaje"] { width: 100%; height: 15rem; }
+    .animatie-rotativa, #link-top, #link-top span, tbody tr { animation: none !important; transition: none !important; transform: none !important; }
+}
+
+/* =========================================================
+   7. STIL PRINTARE (@media print)
+   ========================================================= */
+@media print {
+    @page :left { margin: 2cm 0.5cm 2cm 2.5cm; }
+    @page :right { margin: 2cm 2.5cm 2cm 0.5cm; }
+    .media-print-hide, img, video, iframe, nav, .hamburger, #link-top { display: none !important; }
+    .grid-container { display: block !important; }
+    .zona { margin-bottom: 2rem; page-break-inside: avoid; border: 1px solid black; box-shadow: none; background: white !important; color: black !important; }
+    a { color: black !important; text-decoration: none !important; }
+    h1 { text-align: center; margin-top: 40vh; font-size: 2.5rem; text-decoration: underline; page-break-after: always; color: black; }
+    #print-banner { display: block; position: absolute; top: 0; left: 10%; width: 80%; border: 2px dotted black; text-align: center; padding: 10px; font-weight: bold; }
+    #watermark-print { display: block; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100px; height: 2cm; border: 4px double black; opacity: 0.65; z-index: -10; text-align: center; line-height: 2cm; font-size: 10px; color: black; }
+    footer { page-break-before: always; color: black; background: white; border-top: 2px solid black; }
+}
+
+/* =========================================================
+   8. TASK-URI ETAPA 4 (Linkuri & Video VTT)
+   ========================================================= */
+
+/* LINKURI */
+a:visited { color: var(--c5-secundara); }
+a[href^="http"]::before { content: '⮳'; font-size: 1.5em; margin-right: 0.3rem; display: inline-block; transition: color 0.3s ease; }
+a[href^="http"]:hover::before { color: var(--c4-highlight); }
+main a:not([href^="http"]) {
+    position: relative; text-decoration: none; padding: 0 0.2rem; color: var(--c2-border-inchis); font-weight: bold; display: inline-block;
+    background-image: radial-gradient(circle, var(--c1-accent-deschis) 0%, var(--c1-accent-deschis) 40%, transparent 80%, transparent 100%);
+    background-position: center; background-size: 0% 0%; background-repeat: no-repeat; transition: background-size 0.4s ease, color 0.3s ease; border-radius: 4px;
+}
+main a:not([href^="http"]):hover { background-size: 100% 100%; color: white; }
+main a:not([href^="http"]):active { outline: 2px solid var(--c2-border-inchis); outline-offset: 2px; }
+
+/* VIDEO RESPONSIVE (Lățime în procentaje, minim și maxim) */
+.video-responsive {
+    width: 90%;
+    min-width: 300px;
+    max-width: 800px;
+    height: auto;
+    border: 3px solid var(--c2-border-inchis);
+    border-radius: 8px;
+    display: block;
+    margin: 1.5rem auto;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+}
+
+/* STILIZARE SUBTITRĂRI VTT (Background culoare închisă din temă, text alb, stânga-jos) */
+::cue {
+    background-color: var(--c2-border-inchis);
+    color: #ffffff;
+    font-family: var(--font-principal);
+    font-size: 1.1rem;
+}
+::cue(b) {
+    color: var(--c4-highlight);
+}

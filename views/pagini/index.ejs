@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <%- include('../fragmente/head') %>
+    <title>Xomechtry - Manufacturare CNC și Confecții Metalice</title>
+</head>
+
+<body id="top">
+
+    <%- include('../fragmente/header') %>
+
+    <main class="grid-container">
+        
+        <section id="welcome" class="zona zona-1">
+            <hgroup>
+                <h2>Bun venit la Xomechtry</h2>
+                <p>Manufacturare precisă, la un click distanță. <i class="fa-solid fa-cog fa-spin animatie-rotativa"></i></p>
+            </hgroup>
+            <p>Compania <b>Xomechtry</b> este lider pe piața locală în <b>confecții metalice</b> și prelucrare CNC.</p>
+            <p><strong>Atenție!</strong> Termenele pentru titan sunt decalate.</p>
+            <figure class="media-print-hide">
+                <picture>
+                    <source srcset="/resurse/imagini/cnc-mic.jpeg" media="(max-width: 600px)" />
+                    <img src="/resurse/imagini/cnc-mare.jpeg" alt="Aparat prelucrare CNC" title="Mașină unealtă modernă" />
+                </picture>
+                <figcaption>Echipament de prelucrare CNC (imagine ascunsă la printare)</figcaption>
+            </figure>
+            <p>Formula vitezei de așchiere (MathML):</p>
+            <math xmlns="http://www.w3.org/1998/Math/MathML" class="formula-cnc">
+                <mi>v</mi><mo>=</mo><mfrac><mrow><mi>π</mi><mo>·</mo><mi>d</mi><mo>·</mo><mi>n</mi></mrow><mn>1000</mn></mfrac>
+            </math>
+            <p>Poți afla mai multe despre tehnologia de bază pe <a href="https://ro.wikipedia.org/wiki/Comand%C4%83_numeric%C4%83" target="_blank">Wikipedia CNC</a>.</p>
+        </section>
+
+        <section id="tarife" class="zona zona-2">
+            <h2>Capacități și Tarife</h2>
+            <div class="table-responsive">
+                <table>
+                    <caption>Costuri și termene de execuție</caption>
+                    <thead>
+                        <tr><th>Material</th><th>Procedeu</th><th>Timp</th><th>Preț/Kg</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td rowspan="2">Aluminiu</td><td>Frezare CNC</td><td>3 zile</td><td>150 RON</td></tr>
+                        <tr><td>Strunjire</td><td>2 zile</td><td>120 RON</td></tr>
+                        <tr><td>Oțel Carbon</td><td>Debitarea Laser</td><td>4 zile</td><td>90 RON</td></tr>
+                        <tr><td>Titan</td><td>Frezare 5 Axe</td><td>7 zile</td><td>450 RON</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Sari direct la secțiunea <a href="#evenimente">Evenimente de mai jos</a>.</p>
+        </section>
+
+        <section id="evenimente" class="zona zona-3">
+            <h2>Evenimente</h2>
+            <ul>
+                <li><b>Ziua Porților Deschise</b> - 15 Mai</li>
+                <li><b>Webinar Toleranțe</b> - 20 Iunie</li>
+            </ul>
+        </section>
+
+        <section class="zona zona-4">
+            <h2>Anunțuri</h2>
+            <p>Lorem ipsum dolor sit amet. Mentenanța serverelor este programată sâmbătă.</p>
+        </section>
+
+        <section class="zona zona-5">
+            <h2>Utilizatori Online</h2>
+            <ul><li>Ing. Popescu</li><li>Client #3211</li><li>Op. Strungar</li></ul>
+        </section>
+
+        <section id="statistici" class="zona zona-6">
+            <h2>Starea Fabricii (Live)</h2>
+            <p>Stoc tablă aluminiu: <meter min="0" max="100" low="30" high="80" optimum="90" value="20">20%</meter></p>
+            <p>Capacitate ocupată: <meter min="0" max="100" low="30" high="80" optimum="50" value="95">95%</meter></p>
+        </section>
+
+        <section class="zona zona-7">
+            <h2>Date Server</h2>
+            <p>Server status: OK. Uptime: 99.9%.</p>
+        </section>
+
+        <section class="zona zona-8">
+            <div id="servicii">
+                <h2>Servicii Oferite</h2>
+                <article>
+                    <h3>Prelucrare CNC și Strunjire</h3>
+                    <p>Folosim tehnologia <abbr title="Computer Numerical Control">CNC</abbr>.</p>
+                </article>
+            </div>
+            
+            <hr style="margin: 2rem 0; border: 1px solid var(--c1-accent-deschis);">
+
+            <div id="video-prezentare-local" class="media-print-hide">
+                <h2>Prezentare Funcționare (Video)</h2>
+                <video controls preload="auto" poster="/resurse/imagini/poster-video.jpg" class="video-responsive">
+                    <source src="/resurse/video/prezentare.mp4" type="video/mp4">
+                    <source src="/resurse/video/prezentare.webm" type="video/webm">
+                    
+                    <track src="/resurse/video/sub_ro.vtt" kind="captions" srclang="ro" label="Română" default>
+                    <track src="/resurse/video/sub_en.vtt" kind="captions" srclang="en" label="English">
+                    
+                    Browser-ul tău nu suportă elementul video.
+                </video>
+            </div>
+
+            <div id="video-prezentare" class="media-print-hide" style="margin-top: 2rem;">
+                <h2>Cum funcționează utilajele noastre (Sursa Externa)</h2>
+                <div class="container-iframe">
+                    <div class="taburi-iframe">
+                        <a href="https://www.youtube.com/embed/FNYEXjRmDtI" target="iframe_utilaje">Frezare CNC</a>
+                        <a href="https://www.youtube.com/embed/fDSLWYHuj4g" target="iframe_utilaje">Tutorial Strunjire</a>
+                    </div>
+                    <iframe name="iframe_utilaje" src="https://www.youtube.com/embed/FNYEXjRmDtI" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <%- include('../fragmente/footer') %>
+
+</body>
+</html>

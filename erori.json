@@ -1,0 +1,31 @@
+{
+    "cale_baza": "resurse/imagini/erori",
+    "eroare_default": {
+        "titlu": "Eroare Neașteptată",
+        "text": "A apărut o problemă pe server.",
+        "imagine": "default.png"
+    },
+    "info_erori": [
+        {
+            "identificator": 404,
+            "status": true,
+            "titlu": "Pagină negăsită",
+            "text": "Pagina pe care o cauți nu există în fabrică.",
+            "imagine": "404.png"
+        },
+        {
+            "identificator": 403,
+            "status": true,
+            "titlu": "Acces Interzis",
+            "text": "Nu ai permisiunea să explorezi acest folder.",
+            "imagine": "403.png"
+        },
+        {
+            "identificator": 400,
+            "status": true,
+            "titlu": "Cerere Invalidă",
+            "text": "Fișierele șablon nu pot fi accesate direct.",
+            "imagine": "400.png"
+        }
+    ]
+}
