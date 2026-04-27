@@ -16,8 +16,18 @@
                 <h2>Bun venit la Xomechtry</h2>
                 <p>Manufacturare precisă, la un click distanță. <i class="fa-solid fa-cog fa-spin animatie-rotativa"></i></p>
             </hgroup>
+            
+            <div class="container-reflexie-text">
+                <div class="text-original">Prelucrari</div>
+                <div class="text-reflexie">Prelucrari</div>
+            </div>
+
             <p>Compania <b>Xomechtry</b> este lider pe piața locală în <b>confecții metalice</b> și prelucrare CNC.</p>
+            
+            <blockquote>"Precizia nu este doar un obiectiv pentru noi, este standardul cu care începem fiecare zi de muncă."</blockquote>
+            
             <p><strong>Atenție!</strong> Termenele pentru titan sunt decalate.</p>
+            
             <figure class="media-print-hide">
                 <picture>
                     <source srcset="/resurse/imagini/cnc-mic.jpeg" media="(max-width: 600px)" />
@@ -25,6 +35,14 @@
                 </picture>
                 <figcaption>Echipament de prelucrare CNC (imagine ascunsă la printare)</figcaption>
             </figure>
+
+            <p>Apasă pe imagine pentru a o vedea la dimensiune completă:</p>
+            <a href="/resurse/imagini/cnc-mare.jpeg" target="_blank">
+                <img src="/resurse/imagini/cnc-mic.jpeg" alt="Aparat prelucrare CNC" title="Mașină unealtă modernă" style="max-width: 250px; border: 2px solid var(--c5-secundara);">
+            </a>
+
+            <p>Descarcă lista completă de utilaje: <a href="/resurse/imagini/cnc-mare.jpeg" download="lista_utilaje_xomechtry.jpeg">Descarcă PDF (simulat)</a></p>
+
             <p>Formula vitezei de așchiere (MathML):</p>
             <math xmlns="http://www.w3.org/1998/Math/MathML" class="formula-cnc">
                 <mi>v</mi><mo>=</mo><mfrac><mrow><mi>π</mi><mo>·</mo><mi>d</mi><mo>·</mo><mi>n</mi></mrow><mn>1000</mn></mfrac>
@@ -46,6 +64,9 @@
                         <tr><td>Oțel Carbon</td><td>Debitarea Laser</td><td>4 zile</td><td>90 RON</td></tr>
                         <tr><td>Titan</td><td>Frezare 5 Axe</td><td>7 zile</td><td>450 RON</td></tr>
                     </tbody>
+                    <tfoot>
+                        <tr><td colspan="4" style="background-color: var(--c4-highlight); font-weight: bold; color: var(--c2-border-inchis);">Prețurile sunt orientative și nu includ TVA.</td></tr>
+                    </tfoot>
                 </table>
             </div>
             <p>Sari direct la secțiunea <a href="#evenimente">Evenimente de mai jos</a>.</p>
@@ -54,8 +75,8 @@
         <section id="evenimente" class="zona zona-3">
             <h2>Evenimente</h2>
             <ul>
-                <li><b>Ziua Porților Deschise</b> - 15 Mai</li>
-                <li><b>Webinar Toleranțe</b> - 20 Iunie</li>
+                <li><b>Ziua Porților Deschise</b> - <time datetime="2026-05-15T12:00">15 Mai ora 12:00</time> - Tur ghidat al fabricii.</li>
+                <li><b>Webinar Toleranțe</b> - <time datetime="2026-06-20T18:00">20 Iunie ora 18:00</time> - Prezentare tehnici de precizie.</li>
             </ul>
         </section>
 
@@ -89,6 +110,30 @@
                 </article>
             </div>
             
+            <div style="margin-top: 1.5rem;">
+                <h2>Întrebări Frecvente</h2>
+                <details style="margin-bottom: 0.5rem; cursor: pointer;">
+                    <summary style="font-weight: bold; color: var(--c2-border-inchis);">Ce materiale plastice prelucrați?</summary>
+                    <p style="padding: 0.5rem 0;">Prelucrăm în principal POM-C, PTFE (Teflon) și PEEK.</p>
+                </details>
+                <details style="cursor: pointer;">
+                    <summary style="font-weight: bold; color: var(--c2-border-inchis);">Asigurați transport pentru piese mari?</summary>
+                    <p style="padding: 0.5rem 0;">Da, pentru comenzi ce depășesc 500 kg, transportul este asigurat gratuit în limita a 100 km.</p>
+                </details>
+            </div>
+
+            <hr class="stil-custom">
+
+            <div class="media-print-hide">
+                <h2>Imagine Duotone</h2>
+                <div class="duotone-container" title="Efect Duotone care dispare la hover"></div>
+            </div>
+
+            <section class="media-print-hide" style="margin-top: 3rem;">
+                <h2>Galeria Xomechtry</h2>
+                <%- include('../fragmente/galerie') %>
+            </section>
+
             <hr style="margin: 2rem 0; border: 1px solid var(--c1-accent-deschis);">
 
             <div id="video-prezentare-local" class="media-print-hide">
@@ -96,10 +141,8 @@
                 <video controls preload="auto" poster="/resurse/imagini/poster-video.jpg" class="video-responsive">
                     <source src="/resurse/video/prezentare.mp4" type="video/mp4">
                     <source src="/resurse/video/prezentare.webm" type="video/webm">
-                    
                     <track src="/resurse/video/sub_ro.vtt" kind="captions" srclang="ro" label="Română" default>
                     <track src="/resurse/video/sub_en.vtt" kind="captions" srclang="en" label="English">
-                    
                     Browser-ul tău nu suportă elementul video.
                 </video>
             </div>
@@ -108,8 +151,9 @@
                 <h2>Cum funcționează utilajele noastre (Sursa Externa)</h2>
                 <div class="container-iframe">
                     <div class="taburi-iframe">
-                        <a href="https://www.youtube.com/embed/FNYEXjRmDtI" target="iframe_utilaje">Frezare CNC</a>
+                        <a href="https://www.youtube.com/embed/FNYEXjRmDtI" target="iframe_utilaje">Frezare CNC (Video Curent)</a>
                         <a href="https://www.youtube.com/embed/fDSLWYHuj4g" target="iframe_utilaje">Tutorial Strunjire</a>
+                        <a href="https://www.youtube.com/embed/O-25Rixb6m0" target="iframe_utilaje">Centru 5 Axe</a>
                     </div>
                     <iframe name="iframe_utilaje" src="https://www.youtube.com/embed/FNYEXjRmDtI" allowfullscreen></iframe>
                 </div>

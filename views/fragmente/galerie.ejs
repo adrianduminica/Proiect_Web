@@ -1,0 +1,19 @@
+<div class="galerie-statica">
+    <% if(locals.imaginiGalerie && locals.imaginiGalerie.length > 0) { %>
+        <% for(let img of imaginiGalerie) { %>
+            <figure>
+                <picture>
+                    <source srcset="<%= img.cale_mic %>" media="(max-width: 600px)">
+                    <source srcset="<%= img.cale_mediu %>" media="(max-width: 1024px)">
+                    <img src="<%= img.cale_mare %>" alt="<%= img.nume %>" title="<%= img.descriere %>">
+                </picture>
+                <figcaption>
+                    <%= img.descriere %>
+                    <% if(img.licenta) { %> <br><small>(Autor: <%= img.autor %> - <%= img.licenta %>)</small> <% } %>
+                </figcaption>
+            </figure>
+        <% } %>
+    <% } else { %>
+        <p>Nu există imagini disponibile pentru intervalul orar curent.</p>
+    <% } %>
+</div>

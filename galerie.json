@@ -1,0 +1,11 @@
+{
+    "cale_galerie": "resurse/imagini/galerie",
+    "imagini": [
+        { "cale_relativa": "1.jpeg", "nume": "CNC 5 axe", "descriere": "Piesa facuta pe CNC in 5 axe", "timp": "zi" },
+        { "cale_relativa": "2.jpeg", "nume": "CNC 3 axe", "descriere": "Piesa facuta pe CNC in 3 axe", "timp": "zi" },
+        { "cale_relativa": "3.jpg", "nume": "Strunjire ax", "descriere": "Piesa frezata cu precizie", "timp": "zi" },
+        { "cale_relativa": "4.jpg", "nume": "Frezare titan", "descriere": "Componenta prelucrata din titan", "timp": "zi" },
+        { "cale_relativa": "5.jpg", "nume": "Piesa aluminiu", "descriere": "Piesa executata din aluminiu", "timp": "zi" },
+        { "cale_relativa": "6.jpg", "nume": "Control calitate", "descriere": "Piesa finala rectificata", "timp": "zi" }
+    ]
+}
