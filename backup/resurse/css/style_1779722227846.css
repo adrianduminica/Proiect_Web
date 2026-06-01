@@ -52,7 +52,7 @@ header {
   color: white;
   padding: 1.5rem var(--spatiere-laterala);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   position: relative;
 }
@@ -226,10 +226,12 @@ th {
 
 tbody tr:nth-child(even) td {
   border-bottom: 2px solid var(--c1-accent-deschis);
+  border-top: 2px solid var(--c1-accent-deschis);
 }
 
 tbody tr:nth-child(odd) td {
   border-bottom: 2px solid var(--c2-border-inchis);
+  border-top: 2px solid var(--c2-border-inchis);
 }
 
 tbody tr {
@@ -315,10 +317,11 @@ iframe[name=iframe_utilaje] {
   transform: rotate(-360deg);
 }
 
-/* MathML  */
+/* MathML Corectat */
 .formula-cnc {
-  width: fit-content;
-  margin: 2rem auto;
+  display: block;
+  text-align: center;
+  margin: 2rem 0;
   font-size: 2.5rem;
   padding: 1rem;
 }

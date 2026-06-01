@@ -226,10 +226,12 @@ th {
 
 tbody tr:nth-child(even) td {
   border-bottom: 2px solid var(--c1-accent-deschis);
+  border-top: 2px solid var(--c1-accent-deschis);
 }
 
 tbody tr:nth-child(odd) td {
   border-bottom: 2px solid var(--c2-border-inchis);
+  border-top: 2px solid var(--c2-border-inchis);
 }
 
 tbody tr {
@@ -247,14 +249,14 @@ tbody tr:hover {
 /* TABURI IFRAME */
 .container-iframe {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
 }
 
 .taburi-iframe {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 0.5rem;
   flex-shrink: 0;
 }
@@ -315,10 +317,11 @@ iframe[name=iframe_utilaje] {
   transform: rotate(-360deg);
 }
 
-/* MathML  */
+/* MathML Corectat */
 .formula-cnc {
-  width: fit-content;
-  margin: 2rem auto;
+  display: block;
+  text-align: center;
+  margin: 2rem 0;
   font-size: 2.5rem;
   padding: 1rem;
 }
