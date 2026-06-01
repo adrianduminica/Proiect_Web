@@ -1,0 +1,69 @@
+// =====================================================================
+//  GALERIE ANIMATA (Bonus Etapa 5)
+//  CSS-ul este generat de server prin SASS, in functie de numarul
+//  ALEATOR de imagini (divizibil cu 3, < 16) ales la fiecare cerere:
+//      @use 'galerie-animata' with ($nr-imagini: <N>);
+//  Tranzitia se face cu clip-path pornind din centru (inset 0 50% 0 50%).
+//  Animatia se opreste la hover; galeria nu se afiseaza pe ecran mediu/mic.
+// =====================================================================
+@use 'sass:math';
+
+$nr-imagini: 6 !default;            // suprascris prin @use ... with(...)
+$durata-slot: 2.4s;                 // timpul de afisare al unei imagini
+$durata-totala: $durata-slot * $nr-imagini;
+$portie-tranzitie: 0.22;            // fractiune din slot pentru deschidere/inchidere
+
+.galerie-animata {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    height: 420px;
+    margin: 2rem auto;
+    overflow: hidden;
+    border: 18px solid transparent;
+    border-image: url('/resurse/imagini/cnc-mare.jpeg') 30 round;
+    border-radius: 8px;
+
+    .ga-imagine {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        clip-path: inset(0 50% 0 50%);          // initial: inchis spre centru (invizibil)
+        animation-duration: $durata-totala;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+    }
+
+    // Pauza animatiei cand venim cu cursorul pe galerie
+    &:hover .ga-imagine {
+        animation-play-state: paused;
+    }
+}
+
+// Generam cate un set de keyframes pentru fiecare imagine, cu fereastra ei de timp
+@for $i from 0 through $nr-imagini - 1 {
+    $start:  math.percentage(math.div($i, $nr-imagini));
+    $end:    math.percentage(math.div($i + 1, $nr-imagini));
+    $slot:   math.percentage(math.div(1, $nr-imagini));
+    $delta:  $slot * $portie-tranzitie;
+
+    .galerie-animata .ga-imagine:nth-child(#{$i + 1}) {
+        animation-name: ga-anim-#{$i};
+    }
+
+    @keyframes ga-anim-#{$i} {
+        0%                  { clip-path: inset(0 50% 0 50%); z-index: 1; }
+        #{$start}           { clip-path: inset(0 50% 0 50%); z-index: 2; }
+        #{$start + $delta}  { clip-path: inset(0 0 0 0);     z-index: 2; } // deschidere din centru
+        #{$end - $delta}    { clip-path: inset(0 0 0 0);     z-index: 2; } // imaginea ramane vizibila
+        #{$end}             { clip-path: inset(0 50% 0 50%); z-index: 1; } // inchidere spre centru
+        100%                { clip-path: inset(0 50% 0 50%); z-index: 1; }
+    }
+}
+
+// Galeria animata NU se afiseaza pe ecran mediu si mic
+@media screen and (max-width: 1024px) {
+    .galerie-animata { display: none; }
+}

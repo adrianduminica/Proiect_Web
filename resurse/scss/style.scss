@@ -33,7 +33,7 @@ p, figure { margin-bottom: 1rem; }
 #watermark-print, #print-banner { display: none; }
 
 /* =========================================================
-   3. HEADER & MENIU
+   3. HEADER & MENIU (Etapa 3 - variante-meniu)
    ========================================================= */
 header {
     background-color: var(--c2-border-inchis);
@@ -315,8 +315,67 @@ hr.stil-custom {
     
     header {
         flex-direction: row; justify-content: space-between;
-        #main-nav { display: none; } 
-        
+
+        /* Panoul nav apare cu efect sweep (clip-path pe întreg panoul) */
+        #main-nav {
+            display: block;
+            position: absolute;
+            top: 100%; left: 0;
+            width: 100%;
+            z-index: 200;
+            margin-top: 0;
+            background-color: var(--c2-border-inchis);
+
+            /* Stare inițială: invizibil, colaps în vârful săgeții (top-left) */
+            opacity: 0;
+            pointer-events: none;
+            clip-path: polygon(10% 0%, 10% 0%, 0% 20%, 0% 20%, 0% 20%);
+            transition: opacity $tr-speed ease, clip-path $tr-speed cubic-bezier(0.4, 0, 0.2, 1);
+
+            /* Stare deschisă: sweep spre forma de săgeată */
+            &.nav-open {
+                opacity: 1;
+                pointer-events: all;
+                clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 20%);
+            }
+
+            .menu-principal {
+                flex-direction: column;
+                gap: 0;
+                align-items: stretch;
+
+                > li {
+                    > .nav-link {
+                        display: block;
+                        text-align: center;
+                        padding: 1rem;
+                    }
+
+                    &:hover .sub-meniu { transform: scale(1) !important; }
+
+                    .sub-meniu {
+                        position: static !important;
+                        transform: scale(1) !important;
+                        transform-origin: unset !important;
+                        min-width: 100%;
+                        border-radius: 0;
+                        border: none;
+                        border-top: 1px solid rgba(255, 255, 255, 0.2);
+                        max-height: 0;
+                        overflow: hidden;
+                        /* Submeniu: sweep din vârful săgeții spre dreapta */
+                        clip-path: polygon(10% 0%, 10% 0%, 0% 20%, 0% 20%, 0% 20%);
+                        transition: max-height $tr-speed ease, clip-path $tr-speed cubic-bezier(0.4, 0, 0.2, 1);
+
+                        &.submeniu-open {
+                            max-height: 300px;
+                            clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 20%);
+                        }
+                    }
+                }
+            }
+        }
+
         .hamburger {
             display: block; width: $hamburger-size; height: 24px; position: relative; cursor: pointer;
             .bar {
@@ -338,7 +397,6 @@ hr.stil-custom {
                 opacity: 0;
             }
         }
-        .menu-principal > li .sub-meniu { clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%, 0 20%); }
     }
     
     .grid-container {
@@ -359,7 +417,7 @@ hr.stil-custom {
 }
 
 /* =========================================================
-   8. STIL PRINTARE (@media print)
+   8. STIL PRINTARE (@media print) (Etapa 3 - css-printare)
    ========================================================= */
 @media print {
     @page :left { margin: 2cm 0.5cm 2cm 2.5cm; }
@@ -370,12 +428,12 @@ hr.stil-custom {
     a { color: black !important; text-decoration: none !important; }
     h1 { text-align: center; margin-top: 40vh; font-size: 2.5rem; text-decoration: underline; page-break-after: always; color: black; }
     #print-banner { display: block; position: absolute; top: 0; left: 10%; width: 80%; border: 2px dotted black; text-align: center; padding: 10px; font-weight: bold; }
-    #watermark-print { display: block; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100px; height: 2cm; border: 4px double black; opacity: 0.65; z-index: -10; text-align: center; line-height: 2cm; font-size: 10px; color: black; }
+    #watermark-print { display: flex; align-items: center; justify-content: center; text-align: center; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100px; height: 2cm; border: 4px double black; opacity: 0.65; z-index: 9999; line-height: 1.1; font-size: 9px; color: black; padding: 2px; overflow: hidden; word-break: break-word; background: white; }
     footer { page-break-before: always; color: black; background: white; border-top: 2px solid black; }
 }
 
 /* =========================================================
-   9. LINKURI & VIDEO VTT
+   9. LINKURI & VIDEO VTT (Etapa 4 - stilizare-linkuri & video-vtt)
    ========================================================= */
 a:visited { color: var(--c5-secundara); }
 a[href^="http"]::before { content: '⮳'; font-size: 1.5em; margin-right: 0.3rem; display: inline-block; transition: color 0.3s ease; }
@@ -393,5 +451,5 @@ main a:not([href^="http"]):active { outline: 2px solid var(--c2-border-inchis); 
     border: 3px solid var(--c2-border-inchis); border-radius: 8px; display: block; margin: 1.5rem auto; box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
 }
 
-::cue { background-color: var(--c2-border-inchis); color: #ffffff; font-family: var(--font-principal); font-size: 1.1rem; }
+::cue { background-color: var(--c2-border-inchis); color: #ffffff; font-family: var(--font-principal); font-size: 1.1rem; text-align: left; }
 ::cue(b) { color: var(--c4-highlight); }

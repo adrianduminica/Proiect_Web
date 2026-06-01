@@ -1,0 +1,211 @@
+.galerie-animata {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  height: 420px;
+  margin: 2rem auto;
+  overflow: hidden;
+  border: 18px solid transparent;
+  border-image: url("/resurse/imagini/cnc-mare.jpeg") 30 round;
+  border-radius: 8px;
+}
+.galerie-animata .ga-imagine {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: inset(0 50% 0 50%);
+  animation-duration: 14.4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+.galerie-animata:hover .ga-imagine {
+  animation-play-state: paused;
+}
+
+.galerie-animata .ga-imagine:nth-child(1) {
+  animation-name: ga-anim-0;
+}
+
+@keyframes ga-anim-0 {
+  0% {
+    clip-path: inset(0 50% 0 50%);
+    z-index: 1;
+  }
+  0% {
+    clip-path: inset(0 50% 0 50%);
+    z-index: 2;
+  }
+  3.6666666667% {
+    clip-path: inset(0 0 0 0);
+    z-index: 2;
+  }
+  13% {
+    clip-path: inset(0 0 0 0);
+    z-index: 2;
+  }
+  16.6666666667% {
+    clip-path: inset(0 50% 0 50%);
+    z-index: 1;
+  }
+  100% {
+    clip-path: inset(0 50% 0 50%);
+    z-index: 1;
+  }
+}
+.galerie-animata .ga-imagine:nth-child(2) {
+  animation-name: ga-anim-1;
+}
+
+@keyframes ga-anim-1 {
+  0% {
+    clip-path: inset(0 50% 0 50%);
+    z-index: 1;
+  }
+  16.6666666667% {
+    clip-path: inset(0 50% 0 50%);
+    z-index: 2;
+  }
+  20.3333333333% {
+    clip-path: inset(0 0 0 0);
+    z-index: 2;
+  }
+  29.6666666667% {
+    clip-path: inset(0 0 0 0);
+    z-index: 2;
+  }
+  33.3333333333% {
+    clip-path: inset(0 50% 0 50%);
+    z-index: 1;
+  }
+  100% {
+    clip-path: inset(0 50% 0 50%);
+    z-index: 1;
+  }
+}
+.galerie-animata .ga-imagine:nth-child(3) {
+  animation-name: ga-anim-2;
+}
+
+@keyframes ga-anim-2 {
+  0% {
+    clip-path: inset(0 50% 0 50%);
+    z-index: 1;
+  }
+  33.3333333333% {
+    clip-path: inset(0 50% 0 50%);
+    z-index: 2;
+  }
+  37% {
+    clip-path: inset(0 0 0 0);
+    z-index: 2;
+  }
+  46.3333333333% {
+    clip-path: inset(0 0 0 0);
+    z-index: 2;
+  }
+  50% {
+    clip-path: inset(0 50% 0 50%);
+    z-index: 1;
+  }
+  100% {
+    clip-path: inset(0 50% 0 50%);
+    z-index: 1;
+  }
+}
+.galerie-animata .ga-imagine:nth-child(4) {
+  animation-name: ga-anim-3;
+}
+
+@keyframes ga-anim-3 {
+  0% {
+    clip-path: inset(0 50% 0 50%);
+    z-index: 1;
+  }
+  50% {
+    clip-path: inset(0 50% 0 50%);
+    z-index: 2;
+  }
+  53.6666666667% {
+    clip-path: inset(0 0 0 0);
+    z-index: 2;
+  }
+  63% {
+    clip-path: inset(0 0 0 0);
+    z-index: 2;
+  }
+  66.6666666667% {
+    clip-path: inset(0 50% 0 50%);
+    z-index: 1;
+  }
+  100% {
+    clip-path: inset(0 50% 0 50%);
+    z-index: 1;
+  }
+}
+.galerie-animata .ga-imagine:nth-child(5) {
+  animation-name: ga-anim-4;
+}
+
+@keyframes ga-anim-4 {
+  0% {
+    clip-path: inset(0 50% 0 50%);
+    z-index: 1;
+  }
+  66.6666666667% {
+    clip-path: inset(0 50% 0 50%);
+    z-index: 2;
+  }
+  70.3333333333% {
+    clip-path: inset(0 0 0 0);
+    z-index: 2;
+  }
+  79.6666666667% {
+    clip-path: inset(0 0 0 0);
+    z-index: 2;
+  }
+  83.3333333333% {
+    clip-path: inset(0 50% 0 50%);
+    z-index: 1;
+  }
+  100% {
+    clip-path: inset(0 50% 0 50%);
+    z-index: 1;
+  }
+}
+.galerie-animata .ga-imagine:nth-child(6) {
+  animation-name: ga-anim-5;
+}
+
+@keyframes ga-anim-5 {
+  0% {
+    clip-path: inset(0 50% 0 50%);
+    z-index: 1;
+  }
+  83.3333333333% {
+    clip-path: inset(0 50% 0 50%);
+    z-index: 2;
+  }
+  87% {
+    clip-path: inset(0 0 0 0);
+    z-index: 2;
+  }
+  96.3333333333% {
+    clip-path: inset(0 0 0 0);
+    z-index: 2;
+  }
+  100% {
+    clip-path: inset(0 50% 0 50%);
+    z-index: 1;
+  }
+  100% {
+    clip-path: inset(0 50% 0 50%);
+    z-index: 1;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .galerie-animata {
+    display: none;
+  }
+}

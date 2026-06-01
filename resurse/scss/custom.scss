@@ -1,0 +1,65 @@
+// =====================================================================
+//  CUSTOMIZARE BOOTSTRAP cu schema cromatica Xomechtry (Etapa 5)
+//  Compilat automat de server prin compileazaScss() -> custom.css
+//  custom.css se include PRIMUL (inaintea reset.css / style.css) ca sa
+//  poata fi suprascris de stilurile proprii ale site-ului.
+// =====================================================================
+
+// ---------- 1. Schema cromatica ----------
+$c1-accent-deschis: #36AAEB;
+$c2-border-inchis:  #1C1EEB;
+$c3-principala:     #2D6BEB;
+$c4-highlight:      #2DE3EB;
+$c5-secundara:      #5989EB;
+
+// ---------- 2. Suprascriere variabile Bootstrap (INAINTE de import) ----------
+
+// Culori de background pentru minim 2 teme (aplicam schema cromatica)
+$primary:   $c3-principala;
+$secondary: $c5-secundara;
+$success:   $c4-highlight;
+$info:      $c1-accent-deschis;
+$dark:      $c2-border-inchis;
+
+// Culoarea literelor (font) - generala + a headingurilor (ex: titlul unui card)
+$body-color:     #20232a;
+$headings-color: $c2-border-inchis;
+
+// Familia de font implicita
+$font-family-base: 'Roboto', 'Segoe UI', Arial, sans-serif;
+
+// Dimensiunea literelor headingurilor
+$h1-font-size: 2.75rem;
+$h2-font-size: 2rem;
+$h3-font-size: 1.6rem;
+$h4-font-size: 1.3rem;
+$h5-font-size: 1.1rem;
+
+// Dimensiunea razelor de border
+$border-radius:    0.6rem;
+$border-radius-sm: 0.3rem;
+$border-radius-lg: 1rem;
+
+// Inca o variabila aleasa de noi
+$link-color:      $c3-principala;
+$link-decoration: none;
+$enable-shadows:  true;
+
+// Dimensiuni de ecran diferite pentru ecrane medii si mari
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 800px,
+    lg: 1100px,
+    xl: 1320px,
+    xxl: 1500px
+);
+$container-max-widths: (
+    md: 760px,
+    lg: 1060px,
+    xl: 1280px,
+    xxl: 1440px
+);
+
+// ---------- 3. Importul Bootstrap ----------
+@import "bootstrap/scss/bootstrap";

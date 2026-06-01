@@ -1,3 +1,4 @@
+<%# Etapa 5 - Galerie statica (fragment refolosit in index si in pagina dedicata) %>
 <div class="galerie-statica">
     <% if(locals.imaginiGalerie && locals.imaginiGalerie.length > 0) { %>
         <% for(let img of imaginiGalerie) { %>
@@ -5,7 +6,7 @@
                 <picture>
                     <source srcset="<%= img.cale_mic %>" media="(max-width: 600px)">
                     <source srcset="<%= img.cale_mediu %>" media="(max-width: 1024px)">
-                    <img src="<%= img.cale_mare %>" alt="<%= img.nume %>" title="<%= img.descriere %>">
+                    <img src="<%= img.cale_mare %>" alt="<%= img.alt || img.nume %>" title="<%= img.descriere %>">
                 </picture>
                 <figcaption>
                     <%= img.descriere %>

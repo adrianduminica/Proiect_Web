@@ -1,0 +1,32 @@
+<%# Bonus Etapa 5 - Pagina galeriei animate (numar aleator de imagini, CSS generat din SASS) %>
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <%- include('../fragmente/head') %>
+    <link rel="stylesheet" href="/resurse/css/galerie-animata.css">
+    <title>Galerie Dinamică - Xomechtry</title>
+</head>
+<body id="top">
+
+    <%- include('../fragmente/header') %>
+
+    <main style="padding: 2rem var(--spatiere-laterala); min-height: 60vh;">
+        <h2 style="text-align: center;">Galerie Animată</h2>
+        <p style="text-align: center;">
+            La fiecare accesare se generează un număr aleator de imagini
+            (<strong><%= nrImagini %></strong> de data aceasta, offset <strong><%= offset %></strong>).
+            Treci cu cursorul peste galerie pentru a opri animația.
+            <br><small>(Galeria animată se afișează doar pe ecran mare.)</small>
+        </p>
+
+        <div class="galerie-animata">
+            <% imaginiAnimate.forEach(function(img){ %>
+                <img class="ga-imagine" src="<%= img.cale %>" alt="<%= img.nume %>" title="<%= img.descriere %>">
+            <% }); %>
+        </div>
+    </main>
+
+    <%- include('../fragmente/footer') %>
+
+</body>
+</html>

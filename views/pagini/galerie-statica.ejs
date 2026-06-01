@@ -1,0 +1,23 @@
+<%# Etapa 5 - Pagina dedicata galeriei statice %>
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <%- include('../fragmente/head') %>
+    <title>Galerie Statică - Xomechtry</title>
+</head>
+<body id="top">
+
+    <%- include('../fragmente/header') %>
+
+    <main style="padding: 2rem 0;">
+        <h2 style="text-align: center; margin-bottom: 1.5rem;">Galeria Xomechtry</h2>
+        <p style="text-align: center; max-width: 60rem; margin: 0 auto 1.5rem;">
+            Imaginile afișate depind de intervalul orar curent (dimineața / zi / noapte).
+        </p>
+        <%- include('../fragmente/galerie') %>
+    </main>
+
+    <%- include('../fragmente/footer') %>
+
+</body>
+</html>

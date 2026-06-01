@@ -28,6 +28,31 @@
             <p>Dorești să plasezi o comandă sau să vezi ce mașinării folosim? Întoarce-te pe <a href="/index">pagina principală</a> pentru a analiza capacitățile noastre.</p>
         </section>
 
+        <!-- Elemente Bootstrap cu tema cromatica customizata (Etapa 5) -->
+        <section class="zona" style="background-color: white; margin-top: 2rem;">
+            <h2>Componente Bootstrap (temă customizată)</h2>
+            <p>Butoanele, alerta și cardul de mai jos folosesc culorile și border-radius-ul definite în <code>custom.scss</code>.</p>
+
+            <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                <button type="button" class="btn btn-primary">Primar</button>
+                <button type="button" class="btn btn-secondary">Secundar</button>
+                <button type="button" class="btn btn-success">Succes</button>
+                <button type="button" class="btn btn-info">Info</button>
+            </div>
+
+            <div class="alert alert-info" role="alert">
+                Aceasta este o alertă Bootstrap stilizată cu schema cromatică Xomechtry.
+            </div>
+
+            <div class="card" style="max-width: 22rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Card Bootstrap</h5>
+                    <p class="card-text">Border-radius, culori de temă și familia de font sunt customizate prin SASS.</p>
+                    <a href="/index" class="btn btn-primary">Acțiune</a>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <%- include('../fragmente/footer') %>

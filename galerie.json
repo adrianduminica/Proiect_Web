@@ -1,11 +1,149 @@
 {
     "cale_galerie": "resurse/imagini/galerie",
     "imagini": [
-        { "cale_relativa": "1.jpeg", "nume": "CNC 5 axe", "descriere": "Piesa facuta pe CNC in 5 axe", "timp": "zi" },
-        { "cale_relativa": "2.jpeg", "nume": "CNC 3 axe", "descriere": "Piesa facuta pe CNC in 3 axe", "timp": "zi" },
-        { "cale_relativa": "3.jpg", "nume": "Strunjire ax", "descriere": "Piesa frezata cu precizie", "timp": "zi" },
-        { "cale_relativa": "4.jpg", "nume": "Frezare titan", "descriere": "Componenta prelucrata din titan", "timp": "zi" },
-        { "cale_relativa": "5.jpg", "nume": "Piesa aluminiu", "descriere": "Piesa executata din aluminiu", "timp": "zi" },
-        { "cale_relativa": "6.jpg", "nume": "Control calitate", "descriere": "Piesa finala rectificata", "timp": "zi" }
+        {
+            "cale_relativa": "1.jpeg",
+            "nume": "CNC 5 axe",
+            "descriere": "Piesa facuta pe CNC in 5 axe",
+            "timp": "dimineata"
+        },
+        {
+            "cale_relativa": "2.jpeg",
+            "nume": "CNC 3 axe",
+            "descriere": "Piesa facuta pe CNC in 3 axe",
+            "timp": "dimineata"
+        },
+        {
+            "cale_relativa": "7.jpg",
+            "nume": "Centru Makino S33",
+            "descriere": "Centru de prelucrare CNC Makino S33",
+            "timp": "dimineata",
+            "autor": "Glenn McKechnie",
+            "licenta": "CC BY-SA 2.0",
+            "sursa": "https://commons.wikimedia.org/wiki/File:Makino-S33-MachiningCenter-example.jpg"
+        },
+        {
+            "cale_relativa": "8.jpg",
+            "nume": "Centru DeckelMaho DMU50",
+            "descriere": "Centru de frezare CNC DeckelMaho DMU50",
+            "timp": "dimineata",
+            "autor": "Wikimedia Commons",
+            "licenta": "CC BY-SA 2.0",
+            "sursa": "https://commons.wikimedia.org/wiki/File:DeckelMaho-DMU50e-MachiningCenter.jpg"
+        },
+        {
+            "cale_relativa": "9.jpg",
+            "nume": "Freza universala XYZ",
+            "descriere": "Freza universala cu afisaj digital",
+            "timp": "dimineata",
+            "autor": "Contributor",
+            "licenta": "CC BY-SA 3.0",
+            "sursa": "https://commons.wikimedia.org/wiki/File:Xyz_display_milling_machine.jpg"
+        },
+        {
+            "cale_relativa": "10.jpg",
+            "nume": "Model CAD si piesa",
+            "descriere": "Model CAD alaturi de piesa prelucrata CNC",
+            "timp": "dimineata",
+            "autor": "Mike1024",
+            "licenta": "Public domain",
+            "sursa": "https://commons.wikimedia.org/wiki/File:CAD_model_and_CNC_machined_part.PNG"
+        },
+        {
+            "cale_relativa": "3.jpg",
+            "nume": "Strunjire ax",
+            "descriere": "Piesa frezata cu precizie",
+            "timp": "zi"
+        },
+        {
+            "cale_relativa": "4.jpg",
+            "nume": "Frezare titan",
+            "descriere": "Componenta prelucrata din titan",
+            "timp": "zi"
+        },
+        {
+            "cale_relativa": "11.jpg",
+            "nume": "Freza pantograf",
+            "descriere": "Masina de frezat tip pantograf",
+            "timp": "zi",
+            "autor": "Three-quarter-ten",
+            "licenta": "CC BY-SA 3.0",
+            "sursa": "https://commons.wikimedia.org/wiki/File:Pantograph_milling_machine_001.jpg"
+        },
+        {
+            "cale_relativa": "12.jpg",
+            "nume": "Linie CNC chitare",
+            "descriere": "Frezare grif de chitara pe CNC (Taylor)",
+            "timp": "zi",
+            "autor": "Marcin Wichary",
+            "licenta": "CC BY 2.0",
+            "sursa": "https://commons.wikimedia.org/wiki/File:TGFT29_guitar_neck_CNC_milling_machines_-_Taylor_Guitar_Factory.jpg"
+        },
+        {
+            "cale_relativa": "13.jpg",
+            "nume": "Freza verticala 3 axe",
+            "descriere": "Freza verticala Sharp convertita CNC",
+            "timp": "zi",
+            "autor": "BUEngineer",
+            "licenta": "CC BY-SA 3.0",
+            "sursa": "https://commons.wikimedia.org/wiki/File:Sharp_3_Axis_Vertical_Mill_CNC_Converted.jpg"
+        },
+        {
+            "cale_relativa": "14.jpg",
+            "nume": "Freza CNC moderna",
+            "descriere": "Masina de frezat CNC moderna",
+            "timp": "zi",
+            "autor": "Impressionmanufacturer",
+            "licenta": "CC BY-SA 4.0",
+            "sursa": "https://commons.wikimedia.org/wiki/File:CNC_milling_machine.jpg"
+        },
+        {
+            "cale_relativa": "5.jpg",
+            "nume": "Piesa aluminiu",
+            "descriere": "Piesa executata din aluminiu",
+            "timp": "noapte"
+        },
+        {
+            "cale_relativa": "6.jpg",
+            "nume": "Control calitate",
+            "descriere": "Piesa finala rectificata",
+            "timp": "noapte"
+        },
+        {
+            "cale_relativa": "15.jpg",
+            "nume": "Freza CNC Kent",
+            "descriere": "Freza CNC Kent USA KTM-3VSF",
+            "timp": "noapte",
+            "autor": "Mike Zielinski",
+            "licenta": "CC BY-SA 4.0",
+            "sursa": "https://commons.wikimedia.org/wiki/File:Kent_USA_CNC_Knee_Mill_KTM-3VSF.jpg"
+        },
+        {
+            "cale_relativa": "16.jpg",
+            "nume": "Piese aluminiu si otel",
+            "descriere": "Piese din aluminiu si otel facute pe CNC",
+            "timp": "noapte",
+            "autor": "NideloK",
+            "licenta": "CC0",
+            "sursa": "https://commons.wikimedia.org/wiki/File:Aluminum_and_steel_parts_made_with_CNC_milling_machine_in_NideloK.png"
+        },
+        {
+            "cale_relativa": "17.jpg",
+            "nume": "Tarodare rigida",
+            "descriere": "Operatie de tarodare rigida pe CNC",
+            "timp": "noapte",
+            "autor": "MukhtaromST",
+            "licenta": "CC0",
+            "sursa": "https://commons.wikimedia.org/wiki/File:Arbor_Rigit_Taping.jpg"
+        },
+        {
+            "cale_relativa": "18.jpg",
+            "nume": "Generator impulsuri",
+            "descriere": "Generator manual de impulsuri (MPG)",
+            "timp": "noapte",
+            "autor": "MukhtaromST",
+            "licenta": "CC0",
+            "sursa": "https://commons.wikimedia.org/wiki/File:Manual_Pulse_Generator_(MPG).jpg"
+        }
     ]
 }

@@ -51,8 +51,11 @@ function compileazaScss(caleScss, caleCss) {
             fs.copyFileSync(caleCssAbs, caleBackup);
         }
 
-        // Compilare SASS
-        const rez = sass.compile(caleScssAbs);
+        // Compilare SASS (loadPaths: node_modules pentru Bootstrap, folderScss pentru partiale)
+        const rez = sass.compile(caleScssAbs, {
+            loadPaths: [path.join(__dirname, 'node_modules'), obGlobal.folderScss],
+            silenceDeprecations: ['import', 'color-functions', 'global-builtin', 'mixed-decls']
+        });
         fs.writeFileSync(caleCssAbs, rez.css);
         console.log(`[SCSS] Compilare reușită: ${path.basename(caleScssAbs)} -> ${numeFisierCss}`);
     } catch (err) {
@@ -76,6 +79,133 @@ if (fs.existsSync(obGlobal.folderScss)) {
 } else {
     fs.mkdirSync(obGlobal.folderScss, { recursive: true });
 }
+
+/* =========================================================
+   VERIFICARE JSON ERORI (Bonus Etapa 4)
+   ========================================================= */
+
+/* Detecteaza chei duplicate IN ACELASI obiect, lucrand pe STRING (nu pe
+   obiectul parsat, fiindca JSON.parse pastreaza doar ultima valoare).
+   Parcurge textul caracter cu caracter, tine un stack de seturi de chei
+   (cate un set pentru fiecare obiect deschis cu '{'). */
+function gasesteCheiDuplicate(text) {
+    let duplicate = [];
+    let stack = [];           // fiecare element: Set cu cheile obiectului curent
+    let inString = false;
+    let escape = false;
+    let strCurent = '';
+    let ultimulString = null; // ultimul string complet (posibila cheie)
+
+    for (let i = 0; i < text.length; i++) {
+        let c = text[i];
+
+        if (escape) { strCurent += c; escape = false; continue; }
+        if (inString && c === '\\') { escape = true; continue; }
+
+        if (c === '"') {
+            if (inString) { inString = false; ultimulString = strCurent; }
+            else { inString = true; strCurent = ''; }
+            continue;
+        }
+        if (inString) { strCurent += c; continue; }
+
+        if (c === '{') {
+            stack.push(new Set());
+        } else if (c === '}') {
+            stack.pop();
+        } else if (c === ':') {
+            // ultimulString este o cheie a obiectului de pe varful stivei
+            if (stack.length > 0 && ultimulString !== null) {
+                let set = stack[stack.length - 1];
+                if (set.has(ultimulString)) duplicate.push(ultimulString);
+                else set.add(ultimulString);
+            }
+            ultimulString = null;
+        } else if (c === ',') {
+            ultimulString = null;
+        }
+    }
+    return duplicate;
+}
+
+function verificareErori() {
+    let caleJsonErori = path.join(__dirname, 'erori.json');
+
+    // Bonus (0.025): fisierul erori.json nu exista -> mesaj + inchidere aplicatie
+    if (!fs.existsSync(caleJsonErori)) {
+        console.error("[Verificare erori] EROARE FATALA: Fisierul 'erori.json' nu exista in radacina proiectului. Aplicatia se inchide.");
+        process.exit();
+    }
+
+    let textErori = fs.readFileSync(caleJsonErori, 'utf8');
+
+    // Bonus (0.2): proprietate specificata de mai multe ori in acelasi obiect (verificare pe string)
+    let cheiDuplicate = gasesteCheiDuplicate(textErori);
+    if (cheiDuplicate.length > 0) {
+        console.error(`[Verificare erori] EROARE: In 'erori.json' exista chei duplicate in acelasi obiect: ${[...new Set(cheiDuplicate)].join(', ')}. Pastrati o singura aparitie pentru fiecare proprietate.`);
+    }
+
+    let date = JSON.parse(textErori);
+
+    // Bonus (0.025): lipseste una dintre proprietatile de top: info_erori, cale_baza, eroare_default
+    ["cale_baza", "eroare_default", "info_erori"].forEach(prop => {
+        if (date[prop] === undefined) {
+            console.error(`[Verificare erori] EROARE: Lipseste proprietatea obligatorie '${prop}' din 'erori.json'.`);
+        }
+    });
+
+    // Bonus (0.025): pentru eroarea default lipseste titlu / text / imagine
+    if (date.eroare_default) {
+        ["titlu", "text", "imagine"].forEach(prop => {
+            if (date.eroare_default[prop] === undefined) {
+                console.error(`[Verificare erori] EROARE: 'eroare_default' nu are proprietatea '${prop}'.`);
+            }
+        });
+    }
+
+    // Bonus (0.025): folderul din cale_baza nu exista in sistemul de fisiere
+    if (date.cale_baza) {
+        let caleBazaAbs = path.join(__dirname, date.cale_baza);
+        if (!fs.existsSync(caleBazaAbs)) {
+            console.error(`[Verificare erori] EROARE: Folderul specificat in 'cale_baza' (${date.cale_baza}) nu exista in sistemul de fisiere.`);
+        } else {
+            // Bonus (0.05): vreuna dintre imaginile asociate erorilor nu exista
+            let deVerificat = [];
+            if (Array.isArray(date.info_erori)) {
+                date.info_erori.forEach(e => deVerificat.push(e.imagine));
+            }
+            if (date.eroare_default && date.eroare_default.imagine) {
+                deVerificat.push(date.eroare_default.imagine);
+            }
+            deVerificat.forEach(img => {
+                if (img && !fs.existsSync(path.join(caleBazaAbs, img))) {
+                    console.error(`[Verificare erori] EROARE: Imaginea '${img}' asociata unei erori nu exista in folderul '${date.cale_baza}'.`);
+                }
+            });
+        }
+    }
+
+    // Bonus (0.15): mai multe erori cu acelasi identificator
+    if (Array.isArray(date.info_erori)) {
+        let grupe = {};
+        date.info_erori.forEach(e => {
+            let id = e.identificator;
+            if (!grupe[id]) grupe[id] = [];
+            grupe[id].push(e);
+        });
+        Object.keys(grupe).forEach(id => {
+            if (grupe[id].length > 1) {
+                let detalii = grupe[id].map(e => {
+                    let copie = Object.assign({}, e);
+                    delete copie.identificator; // nu afisam identificatorul, restul proprietatilor da
+                    return JSON.stringify(copie);
+                }).join(' ; ');
+                console.error(`[Verificare erori] EROARE: Exista ${grupe[id].length} erori cu acelasi identificator. Erorile (fara identificator): ${detalii}`);
+            }
+        });
+    }
+}
+verificareErori();
 
 /* =========================================================
    INIȚIALIZĂRI JSON (Erori + Galerie)
@@ -130,11 +260,13 @@ function afisareEroare(res, identificator, titlu, text, imagine) {
 /* =========================================================
    MIDDLEWARE-URI (IP & Galerie Statica)
    ========================================================= */
+// Etapa 4 - afisarea IP-ului utilizatorului
 app.use((req, res, next) => {
     res.locals.ip = req.ip || req.connection.remoteAddress;
     next();
 });
 
+// Etapa 5 - Galerie statica: filtrare imagini dupa ora + generare variante mici/medii (sharp)
 app.use(async (req, res, next) => {
     if (!obGlobal.obGalerie) return next();
 
@@ -200,6 +332,46 @@ app.get('/favicon.ico', (req, res) => res.sendFile(path.join(__dirname, 'resurse
    ========================================================= */
 app.get(['/', '/index', '/home'], (req, res) => {
     res.render('pagini/index');
+});
+
+/* GALERIE DINAMICA (Bonus): numar aleator de imagini (divizibil cu 3, < 16),
+   consecutive cu offset aleator. CSS-ul este generat de SASS pe baza numarului. */
+app.get('/galerie-dinamica', (req, res) => {
+    if (!obGlobal.obGalerie || !Array.isArray(obGlobal.obGalerie.imagini)) {
+        return afisareEroare(res, 404);
+    }
+
+    let imagini = obGlobal.obGalerie.imagini;
+    let total = imagini.length;
+
+    // Numere posibile: multipli de 3, < 16, dar nu mai mari decat cate imagini avem
+    let maxMultiplu = Math.min(15, Math.floor(total / 3) * 3);
+    let posibile = [];
+    for (let k = 3; k <= maxMultiplu; k += 3) posibile.push(k);
+    let nr = posibile.length ? posibile[Math.floor(Math.random() * posibile.length)] : Math.floor(total / 3) * 3;
+
+    // Offset aleator astfel incat imaginile consecutive sa incapa
+    let maxOffset = total - nr;
+    let offset = Math.floor(Math.random() * (maxOffset + 1));
+
+    let selectate = imagini.slice(offset, offset + nr).map(img => ({
+        nume: img.nume,
+        descriere: img.descriere,
+        cale: '/' + obGlobal.obGalerie.cale_galerie + '/' + img.cale_relativa
+    }));
+
+    // Generare CSS din SASS pe baza numarului de imagini ales
+    try {
+        let rez = sass.compileString(`@use 'galerie-animata' with ($nr-imagini: ${nr});`, {
+            loadPaths: [obGlobal.folderScss],
+            silenceDeprecations: ['import', 'color-functions', 'global-builtin', 'mixed-decls']
+        });
+        fs.writeFileSync(path.join(obGlobal.folderCss, 'galerie-animata.css'), rez.css);
+    } catch (e) {
+        console.error('[Galerie animata SCSS Eroare]:', e.message);
+    }
+
+    res.render('pagini/galerie-dinamica', { imaginiAnimate: selectate, nrImagini: nr, offset: offset });
 });
 
 app.get('/:pagina', (req, res) => {
