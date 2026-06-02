@@ -474,7 +474,7 @@ hr.stil-custom::after {
 /* =========================================================
    7. RESPONSIVE MEDIA QUERIES (Inclusiv Galeria Mediu/Mic)
    ========================================================= */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
   html {
     font-size: 15px;
   }
@@ -522,7 +522,7 @@ hr.stil-custom::after {
   }
   .galerie-statica { /* Centru jos */ }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   html {
     font-size: 14px;
   }
@@ -544,17 +544,17 @@ hr.stil-custom::after {
     z-index: 200;
     margin-top: 0;
     background-color: var(--c2-border-inchis);
-    /* Stare inițială: invizibil, colaps în vârful săgeții (top-left) */
+    /* Stare inițială: invizibil, colaps într-un punct în colțul stânga-sus */
     opacity: 0;
     pointer-events: none;
-    clip-path: polygon(10% 0%, 10% 0%, 0% 20%, 0% 20%, 0% 20%);
+    clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%);
     transition: opacity 0.4s ease, clip-path 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    /* Stare deschisă: sweep spre forma de săgeată */
+    /* Stare deschisă: sweep care se termină într-un dreptunghi SOLID  */
   }
   header #main-nav.nav-open {
     opacity: 1;
     pointer-events: all;
-    clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 20%);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%);
   }
   header #main-nav .menu-principal {
     flex-direction: column;

@@ -85,16 +85,14 @@ if (fs.existsSync(obGlobal.folderScss)) {
    ========================================================= */
 
 /* Detecteaza chei duplicate IN ACELASI obiect, lucrand pe STRING (nu pe
-   obiectul parsat, fiindca JSON.parse pastreaza doar ultima valoare).
-   Parcurge textul caracter cu caracter, tine un stack de seturi de chei
-   (cate un set pentru fiecare obiect deschis cu '{'). */
+   obiectul parsat*/
 function gasesteCheiDuplicate(text) {
     let duplicate = [];
-    let stack = [];           // fiecare element: Set cu cheile obiectului curent
+    let stack = [];           
     let inString = false;
     let escape = false;
     let strCurent = '';
-    let ultimulString = null; // ultimul string complet (posibila cheie)
+    let ultimulString = null; 
 
     for (let i = 0; i < text.length; i++) {
         let c = text[i];
@@ -131,7 +129,7 @@ function gasesteCheiDuplicate(text) {
 function verificareErori() {
     let caleJsonErori = path.join(__dirname, 'erori.json');
 
-    // Bonus (0.025): fisierul erori.json nu exista -> mesaj + inchidere aplicatie
+    //  fisierul erori.json nu exista -> mesaj + inchidere aplicatie
     if (!fs.existsSync(caleJsonErori)) {
         console.error("[Verificare erori] EROARE FATALA: Fisierul 'erori.json' nu exista in radacina proiectului. Aplicatia se inchide.");
         process.exit();
@@ -139,7 +137,7 @@ function verificareErori() {
 
     let textErori = fs.readFileSync(caleJsonErori, 'utf8');
 
-    // Bonus (0.2): proprietate specificata de mai multe ori in acelasi obiect (verificare pe string)
+    //  proprietate specificata de mai multe ori in acelasi obiect (verificare pe string)
     let cheiDuplicate = gasesteCheiDuplicate(textErori);
     if (cheiDuplicate.length > 0) {
         console.error(`[Verificare erori] EROARE: In 'erori.json' exista chei duplicate in acelasi obiect: ${[...new Set(cheiDuplicate)].join(', ')}. Pastrati o singura aparitie pentru fiecare proprietate.`);
@@ -147,14 +145,14 @@ function verificareErori() {
 
     let date = JSON.parse(textErori);
 
-    // Bonus (0.025): lipseste una dintre proprietatile de top: info_erori, cale_baza, eroare_default
+    //  lipseste una dintre proprietatile de top: info_erori, cale_baza, eroare_default
     ["cale_baza", "eroare_default", "info_erori"].forEach(prop => {
         if (date[prop] === undefined) {
             console.error(`[Verificare erori] EROARE: Lipseste proprietatea obligatorie '${prop}' din 'erori.json'.`);
         }
     });
 
-    // Bonus (0.025): pentru eroarea default lipseste titlu / text / imagine
+    //  pentru eroarea default lipseste titlu / text / imagine
     if (date.eroare_default) {
         ["titlu", "text", "imagine"].forEach(prop => {
             if (date.eroare_default[prop] === undefined) {
@@ -163,7 +161,7 @@ function verificareErori() {
         });
     }
 
-    // Bonus (0.025): folderul din cale_baza nu exista in sistemul de fisiere
+    // folderul din cale_baza nu exista in sistemul de fisiere
     if (date.cale_baza) {
         let caleBazaAbs = path.join(__dirname, date.cale_baza);
         if (!fs.existsSync(caleBazaAbs)) {
@@ -185,7 +183,7 @@ function verificareErori() {
         }
     }
 
-    // Bonus (0.15): mai multe erori cu acelasi identificator
+    //  mai multe erori cu acelasi identificator
     if (Array.isArray(date.info_erori)) {
         let grupe = {};
         date.info_erori.forEach(e => {
